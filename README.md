@@ -1,6 +1,6 @@
 # co-condvar
 
-> [Conditional variable](http://en.wikipedia.org/wiki/Monitor_(synchronization\)) primitive for generator flow-control.
+> [Conditional variable](http://en.wikipedia.org/wiki/Monitor_(synchronization)#Condition_variables) primitive for generator flow-control.
 
 ## Installation
 
