@@ -19,7 +19,7 @@ var exports = module.exports = function(lock) {
  * Can use stringed keys for multi-variable conditions so it
  * can be used as a yield-able event emitter.
  *
- * @param {Mutex|RWLock} state of target
+ * @param {Semaphore} lock to drop on wait
  * @api public
  */
 
