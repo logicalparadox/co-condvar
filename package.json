@@ -1,0 +1,30 @@
+{
+  "name": "co-condvar",
+  "version": "0.0.0",
+  "description": "Conditional variable primitive for generator flow-control.",
+  "author": "Jake Luer <jake@alogicalparadox.com> (http://alogicalparadox.com)",
+  "license": "MIT",
+  "keywords": [
+    "condvar",
+    "co"
+  ],
+  "homepage": "https://github.com/logicalparadox/co-condvar",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/logicalparadox/co-condvar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:logicalparadox/co-condvar.git"
+  },
+  "scripts": {
+    "test": "node_modules/goodwin/bin/goodwin --harmony"
+  },
+  "dependencies": {
+    "co-semaphore": "~0.1.0"
+  },
+  "devDependencies": {
+    "goodwin": "git://github.com/logicalparadox/goodwin",
+    "co": "~3.0.2"
+  }
+}
