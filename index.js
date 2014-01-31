@@ -6,6 +6,14 @@
 
 var Semaphore = require('co-semaphore').Semaphore;
 
+/*!
+ * Primary exports
+ */
+
+var exports = module.exports = function(lock) {
+  return new Condvar(lock);
+};
+
 /**
  * Conditional variable implementation for `Mutex` and `RWLock`.
  * Can use stringed keys for multi-variable conditions so it

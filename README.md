@@ -1,5 +1,7 @@
 # co-condvar
 
+[![Build Status](https://travis-ci.org/logicalparadox/co-condvar.png?branch=master)](https://travis-ci.org/logicalparadox/co-condvar)
+
 > [Conditional variable](http://en.wikipedia.org/wiki/Monitor_(synchronization)#Condition_variables) primitive for generator flow-control.
 
 ## Installation
@@ -12,7 +14,58 @@
 
 ## Example
 
-TBD
+The best way to think of a `condvar` is like a blocking event emitter. The
+following demonstrates a solution to the [consumer/producer problem](http://en.wikipedia.org/wiki/Monitor_(synchronization)#Solving_the_bounded_producer.2Fconsumer_problem)
+using a single conditional variable and its associated lock. 
+
+```js
+var Condvar = require('co-condvar').Condvar;
+
+var queue = [];
+
+function *producer(cv) {
+  var i = 0;
+  while(true) {
+    // acquire lock
+    yield cv.lock.acquire();
+    while (queue.length) yield cv.wait('shift');
+
+    // async stuff
+    yield wait(100);
+    queue.push(i++);
+
+    // signal and release
+    cv.signal('push');
+    cv.lock.release();
+  }
+}
+
+function *consumer(cond) {
+  while(true) {
+    // acquire lock
+    yield cv.lock.acquire();
+    while (!queue.length) yield cv.wait('push');
+
+    // async stuff
+    yield wait(100);
+    var item = queue.shift();
+
+    // signal and release
+    cv.signal('shift');
+    cv.lock.release();
+  }
+}
+
+co(function *main() {
+  var cv = new Condvar();
+
+  co(producer)(cv);
+  co(consumer)(cv);
+
+  yield wait(1000);
+  process.exit();
+})();
+```
 
 ## License
 
