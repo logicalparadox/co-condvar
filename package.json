@@ -1,6 +1,6 @@
 {
   "name": "co-condvar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Conditional variable primitive for generator flow-control.",
   "author": "Jake Luer <jake@alogicalparadox.com> (http://alogicalparadox.com)",
   "license": "MIT",
